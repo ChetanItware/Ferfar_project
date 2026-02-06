@@ -198,7 +198,8 @@ def callback(ch, method, properties, body):
 # WORKER START
 # =========================
 if __name__ == "__main__":
-    os.makedirs("downloads", exist_ok=True)
+    if not os.path.exists("downloads"):
+        os.makedirs("downloads", exist_ok=True)
 
     try:
         connection = pika.BlockingConnection(
